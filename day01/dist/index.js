@@ -1,20 +1,16 @@
 import * as fs from 'fs';
+import partOne from "./partOne.js";
+import partTwo from './partTwo.js';
 const inputs = fs.readFileSync('inputs.txt', 'utf-8');
 const words = inputs.split("\n");
-let maxTotal = 0;
-let i = 0;
-while (true) {
-    let total = 0;
-    while (words[i] != '') {
-        total += parseInt(words[i]);
-        i++;
-    }
-    if (total > maxTotal) {
-        maxTotal = total;
-    }
-    if (i == words.length - 1) {
-        break;
-    }
-    i++;
-}
-console.log(maxTotal);
+let mostCaloriesCarriedByAnElf = partOne(words);
+console.log("Most calories carried by an elf:", mostCaloriesCarriedByAnElf);
+let caloriesByEachElf = partTwo(words);
+// calories in Descending order
+caloriesByEachElf.sort((a, b) => b - a);
+let caloriesByTopThreeElves = caloriesByEachElf.slice(0, 3);
+let totalOfTopThreeElves = 0;
+caloriesByTopThreeElves.forEach((calories) => {
+    totalOfTopThreeElves += calories;
+});
+console.log("Total of top three elves: ", totalOfTopThreeElves);
