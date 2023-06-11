@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-import { findSourceMap } from 'module';
 
 const findTheCommonItem = (rucksack:string):string => {
     const firstCompartment:string = rucksack.slice(0, (rucksack.length/2));
@@ -53,7 +52,7 @@ export const DayThree = () => {
         totalPriorities += commonItemPriority;
     }
 
-    console.log(totalPriorities);
+    console.log("Total Priorities:", totalPriorities);
 
     // part two
     // get groups of three rucksacks
