@@ -7,7 +7,6 @@ export const DayFive = () => {
     const inputs = fs.readFileSync('./inputs/day5.txt', 'utf-8');
     let inputsSections: String[] = inputs.split("\n\n");
     const stackStrings = inputsSections[0].split("\n");
-    console.log(stackStrings);
     const actions = inputsSections[1];
 
     const stack01 = new Stack<string>();
@@ -29,11 +28,15 @@ export const DayFive = () => {
         for (let col=0; col<stackStrings[row].length; col++) {
             let character = stackStrings[row][col];
             if (character && character != '[' && character != ']' && character != ' ') {
-                console.log(character);
+                // extract the values from columns and put in the 
+                // relevant stack.
             }
         }
     }
         
     console.log(stack01);
+    console.log(stack02);
+    console.log(stack03);
+
     
 } 
