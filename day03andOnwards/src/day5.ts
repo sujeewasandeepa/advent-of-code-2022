@@ -41,11 +41,9 @@ export const DayFive = () => {
             stacksInOne.push("\n");
         }
     }
-    console.log(stacksInOne);
 
     let stackNumber = 0;
     stacksInOne.forEach((element) => {
-        console.log(element);
         if (element == '\n') {
             stackNumber ++;
             return;
@@ -54,16 +52,5 @@ export const DayFive = () => {
             stackArray[stackNumber].insert(element);
         }
     })
-       
-    console.log(stack01);
-    console.log(stack02);
-    console.log(stack03);
-    console.log(stack04);
-    console.log(stack05);
-    console.log(stack06);
-    console.log(stack07);
-    console.log(stack08);
-    console.log(stack09);
-
     
 } 
