@@ -20,16 +20,26 @@ export const DayFive = () => {
     const stack09 = new Stack<string>();
 
     const stackArray = [
-        stack01, stack02, stack03, stack03, stack04, stack05,
+        stack01, stack02, stack03, stack04, stack05,
         stack06, stack07, stack08, stack09
     ]
 
-    for (let row=0; row<stackStrings.length; row++) {
-        for (let col=0; col<stackStrings[row].length; col++) {
+//    for (let row=0; row<stackStrings.length; row++) {
+//        for (let col=0; col<stackStrings[row].length; col++) {
+//            let character = stackStrings[row][col];
+//            if (character && character != '[' && character != ']' && character != ' ') {
+//
+//            }
+//        }
+//    }
+
+    for (let col=0; col<35; col++) {
+        for (let row=0; row<stackStrings.length-1; row++) {
             let character = stackStrings[row][col];
             if (character && character != '[' && character != ']' && character != ' ') {
-                // extract the values from columns and put in the 
-                // relevant stack.
+                console.log(character);
+                let arr = col % 9;
+                stackArray[arr].insert(character);
             }
         }
     }
@@ -37,6 +47,12 @@ export const DayFive = () => {
     console.log(stack01);
     console.log(stack02);
     console.log(stack03);
+    console.log(stack04);
+    console.log(stack05);
+    console.log(stack06);
+    console.log(stack07);
+    console.log(stack08);
+    console.log(stack09);
 
     
 } 
