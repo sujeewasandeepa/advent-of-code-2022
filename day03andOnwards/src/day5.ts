@@ -24,24 +24,26 @@ export const DayFive = () => {
         stack06, stack07, stack08, stack09
     ]
 
-//    for (let row=0; row<stackStrings.length; row++) {
-//        for (let col=0; col<stackStrings[row].length; col++) {
-//            let character = stackStrings[row][col];
-//            if (character && character != '[' && character != ']' && character != ' ') {
-//
-//            }
-//        }
-//    }
+    let stacksInOne = [];
 
-    for (let col=0; col<35; col++) {
+    for (let col=0; col<stackStrings[0].length; col++) {
         for (let row=0; row<stackStrings.length-1; row++) {
             let character = stackStrings[row][col];
             if (character && character != '[' && character != ']' && character != ' ') {
-                console.log(character);
-                let arr = col % 9;
-                stackArray[arr].insert(character);
-            }
+                stacksInOne.push(character);
+            } 
         }
+        stacksInOne.push("\n");
+    }
+    let stacksInOneString = stacksInOne.toString();
+    console.log(stacksInOneString);
+    let stackSeparated = stacksInOneString.split("\n");
+
+    for (let element in stackSeparated) {
+        if (stackSeparated[element] && stackSeparated[element]!= '') {
+            console.log(stackSeparated[element].split(','));
+        }
+        console.log("---");
     }
         
     console.log(stack01);
