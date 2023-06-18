@@ -27,25 +27,34 @@ export const DayFive = () => {
     let stacksInOne = [];
 
     for (let col=0; col<stackStrings[0].length; col++) {
+        let characterValid = false;
         for (let row=0; row<stackStrings.length-1; row++) {
             let character = stackStrings[row][col];
             if (character && character != '[' && character != ']' && character != ' ') {
                 stacksInOne.push(character);
-            } 
+                characterValid = true;
+            } else {
+                characterValid = false;
+            }
         }
-        stacksInOne.push("\n");
+        if (characterValid) {
+            stacksInOne.push("\n");
+        }
     }
-    let stacksInOneString = stacksInOne.toString();
-    console.log(stacksInOneString);
-    let stackSeparated = stacksInOneString.split("\n");
+    console.log(stacksInOne);
 
-    for (let element in stackSeparated) {
-        if (stackSeparated[element] && stackSeparated[element]!= '') {
-            console.log(stackSeparated[element].split(','));
+    let stackNumber = 0;
+    stacksInOne.forEach((element) => {
+        console.log(element);
+        if (element == '\n') {
+            stackNumber ++;
+            return;
         }
-        console.log("---");
-    }
-        
+        if (stackNumber <= stackArray.length-1) {
+            stackArray[stackNumber].insert(element);
+        }
+    })
+       
     console.log(stack01);
     console.log(stack02);
     console.log(stack03);
