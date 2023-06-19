@@ -74,13 +74,32 @@ export const DayFive = () => {
             let quantity = parseInt(quantityStr);
 
 
-          // put into the to stack from temp stack
+            // part one
+//            for (let i=0; i<quantity; i++) {
+//                let temp = fromStack.pop();
+//                if (temp) {
+//                    toStack.insert(temp);
+//                }
+//            }
+
+            // part two starts 
+            let tempStack = new Stack<string>();
+            // put into temp stack 
             for (let i=0; i<quantity; i++) {
                 let temp = fromStack.pop();
+                if (temp) {
+                    tempStack.insert(temp);
+                }
+            } 
+
+            // put into to stack
+            for (let i=0; i<quantity; i++) {
+                let temp = tempStack.pop();
                 if (temp) {
                     toStack.insert(temp);
                 }
             }
+            // part two ends
 
         }
         console.log(stackArray);
