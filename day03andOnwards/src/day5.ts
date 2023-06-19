@@ -5,6 +5,7 @@ import { Stack } from './data-structures/Stack';
 
 export const DayFive = () => {
     const inputs = fs.readFileSync('./inputs/day5.txt', 'utf-8');
+    //const inputs = fs.readFileSync('./inputs/day5-short.txt', 'utf-8');
     let inputsSections: String[] = inputs.split("\n\n");
     const stackStrings = inputsSections[0].split("\n");
     const actions = inputsSections[1];
@@ -28,7 +29,7 @@ export const DayFive = () => {
 
     for (let col=0; col<stackStrings[0].length; col++) {
         let characterValid = false;
-        for (let row=0; row<stackStrings.length-1; row++) {
+        for (let row=stackStrings.length-2; row>=0; row--) {
             let character = stackStrings[row][col];
             if (character && character != '[' && character != ']' && character != ' ') {
                 stacksInOne.push(character);
@@ -52,6 +53,7 @@ export const DayFive = () => {
     })
 
 
+    console.log(stackArray);
     const actionsRows = actions.split("\n");
 
     for (let row in actionsRows) {
@@ -71,25 +73,17 @@ export const DayFive = () => {
 
             let quantity = parseInt(quantityStr);
 
-            let tempStack = new Stack<string>();
-
-            // put into a temp stack
-            for (let i=0; i<quantity; i++) {
-                let temp = fromStack.pop();
-                if (temp) {
-                    tempStack.insert(temp);
-                }
-            }
 
           // put into the to stack from temp stack
             for (let i=0; i<quantity; i++) {
-                let temp = tempStack.pop();
+                let temp = fromStack.pop();
                 if (temp) {
                     toStack.insert(temp);
                 }
             }
 
         }
+        console.log(stackArray);
 
     }
 
