@@ -52,5 +52,13 @@ export const DayFive = () => {
             stackArray[stackNumber].insert(element);
         }
     })
-    
+
+    const actionsRows = actions.split("\n");
+    actionsRows.forEach((action) => {
+       let quantity = action.split(" ")[1];
+       let from = action.split(" ")[3];
+       let to = action.split(" ")[5];
+
+    })
+
 } 
