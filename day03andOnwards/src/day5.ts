@@ -33,9 +33,7 @@ export const DayFive = () => {
             if (character && character != '[' && character != ']' && character != ' ') {
                 stacksInOne.push(character);
                 characterValid = true;
-            } else {
-                characterValid = false;
-            }
+            } 
         }
         if (characterValid) {
             stacksInOne.push("\n");
@@ -53,12 +51,57 @@ export const DayFive = () => {
         }
     })
 
-    const actionsRows = actions.split("\n");
-    actionsRows.forEach((action) => {
-       let quantity = action.split(" ")[1];
-       let from = action.split(" ")[3];
-       let to = action.split(" ")[5];
 
+    const actionsRows = actions.split("\n");
+
+    for (let row in actionsRows) {
+        let action = actionsRows[row];
+
+        let quantityStr = action.split(" ")[1];
+        let from = action.split(" ")[3];
+        let to = action.split(" ")[5];
+
+
+        if (from && to && quantityStr) {
+            let fromStackIndex = parseInt(from) - 1;
+            let fromStack = stackArray[fromStackIndex];
+
+            let toStackIndex = parseInt(to) -1;
+            let toStack = stackArray[toStackIndex];
+
+            let quantity = parseInt(quantityStr);
+
+            let tempStack = new Stack<string>();
+
+            // put into a temp stack
+            for (let i=0; i<quantity; i++) {
+                let temp = fromStack.pop();
+                if (temp) {
+                    tempStack.insert(temp);
+                }
+            }
+
+          // put into the to stack from temp stack
+            for (let i=0; i<quantity; i++) {
+                let temp = tempStack.pop();
+                if (temp) {
+                    toStack.insert(temp);
+                }
+            }
+
+        }
+
+    }
+
+    // getting what's on top of each stack
+    let cratesOnTop:string[] = [];
+    stackArray.map((stack) => {
+        let temp = stack.peek();
+        if (temp) {
+            cratesOnTop.push(temp);
+        }
     })
+
+    console.log(cratesOnTop.join(''));
 
 } 
